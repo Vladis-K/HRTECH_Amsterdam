@@ -1,0 +1,9 @@
+//Logo
+
+.hrn-logo > a > img {
+  width: 222px;
+
+  @media only screen and (max-width: 767px) {
+    width: 54vw;
+  }
+}
