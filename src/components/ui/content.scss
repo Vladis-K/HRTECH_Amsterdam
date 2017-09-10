@@ -63,8 +63,12 @@ nav{
     margin: 0;
     padding-left: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 50vw;
 
+    @media only screen and (min-width: 992px) and (max-width: 1439px) {
+      width: auto;
+    }
 
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       padding-top: 22px;
@@ -84,7 +88,6 @@ nav{
   //Menu
   .menu-item{
     padding: 30px 10px 34px;
-    width: 255px;
     cursor: pointer;
     list-style-type: none;
     display: flex;
@@ -101,9 +104,6 @@ nav{
       outline: none;
     }
 
-    @media only screen and (min-width: 1920px) and (max-width: 3840px) {
-      width: 11vw
-    }
 
     @media only screen and (min-width: 768px) and (max-width: 1199px) {
       width: 20vw;
@@ -151,7 +151,7 @@ nav{
       }
     }
     &__link{
-      width: 160px;
+      width: auto;
       color: $colorPartnerText;
       text-transform: uppercase;
       font-size: 18px;
@@ -201,7 +201,7 @@ nav{
   &:after {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 55%;
     bottom: -20px;
     border: 10px solid transparent;
     border-top: 10px solid $colorBgCard;
