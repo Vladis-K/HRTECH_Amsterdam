@@ -5,7 +5,7 @@ import logo from '../../data/logo-hrn.png';
 
 const Logo = () => (
     <div className="hrn-logo">
-        <a>
+        <a href="//hrn.io">
             <img src={logo} alt="HRN" />
         </a>
     </div>

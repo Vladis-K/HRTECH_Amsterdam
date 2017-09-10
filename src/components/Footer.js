@@ -10,7 +10,7 @@ class Footer extends Component {
         return (
             <footer>
                 <div className="footer-logo">
-                    <a href="#"><img src={FooterLogo} alt=""/></a>
+                    <a href="//hrn.io"><img src={FooterLogo} alt=""/></a>
                 </div>
                 <div className="footer-menu">
                     <ul className="footer-menu__list">
@@ -33,9 +33,11 @@ class Footer extends Component {
                     <div className="general-info__list">
                         <div className="general-info__hrn"><a href="#">HRN</a></div>
                         <div className="general-info__conditions">
+                            <span className="streak hidden-mobile"/>
                             <span className="general-info-terms"><a href="#">Terms & Conditions</a></span>
                             <span className="streak"/>
                             <span className="general-info-policy"><a href="#">Cookie Policy</a></span>
+                            <span className="streak hidden-mobile"/>
                         </div>
                         <div className="general-info-copyright">
                             <a href="#">Copyright @ 2015 HRN Europe. <br className="hidden-desktop"/> All Rights Reserved.</a>

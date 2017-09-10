@@ -5,6 +5,7 @@
 @import './fonts/fonts.css';
 @import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 
+//General settings
 
 body {
   font-family: 'museo_sans_cyrl500','Arial', sans-serif;
@@ -15,7 +16,6 @@ body {
   user-select: none;
   overflow-x: hidden;
 }
-
 
 ::-webkit-scrollbar {
   display: none;
@@ -28,7 +28,23 @@ body {
   padding: 18px 25px 10px;
 
   @media only screen and (max-width: 767px) {
+    display: flex;
+    justify-content: space-between;
     padding: 12px 20px 18px;
+  }
+
+  .mobile-menu {
+    &__show{
+      & > i {
+        @media only screen and (max-width: 767px) {
+          color: $colorDefault;
+          font-size: 7vw;
+        }
+        @media only screen and (max-width: 450px) {
+          font-size: 10vw;
+        }
+      }
+    }
   }
 }
 
@@ -37,28 +53,25 @@ nav{
   background-color: $colorBgCard;
   display: flex;
   justify-content: center;
-  box-shadow: 0 0 10px 1px rgba(51, 51, 51, 0.3);
+  box-shadow: 0 0 15px 1px rgba(51, 51, 51, 0.3);
 
-  @media only screen and (min-width: 768px)and (max-width: 991px) {
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
     padding: 0 30px;
   }
 
   ul.items{
     margin: 0;
+    padding-left: 0;
     display: flex;
     justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 13px;
 
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       padding-top: 22px;
       padding-bottom: 16px;
       width: 100%;
-      padding-left: 0 !important;
       justify-content: space-between;
     }
-
 
     @media only screen and (max-width: 767px) {
       padding-top: 10px;
@@ -67,6 +80,8 @@ nav{
       width: calc(90% - 30px);
     }
   }
+
+  //Menu
   .menu-item{
     padding: 30px 10px 34px;
     width: 255px;
@@ -75,16 +90,32 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
+    @extend .transition-all;
+    opacity: 1;
 
+    &:hover:not(.focused){
+      @extend .transition-all;
+      opacity: .5;
+    }
+    &:focus{
+      outline: none;
+    }
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 1920px) and (max-width: 3840px) {
+      width: 11vw
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+      width: 20vw;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       flex-direction: row;
       justify-content: center;
       align-items: flex-start;
       width: 100%;
       padding: 0;
     }
-
 
     @media only screen and (max-width: 767px) {
       flex-direction: column;
@@ -97,12 +128,15 @@ nav{
 
     &__logo{
       height: auto;
+      @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        display: flex;
+      }
+
       & > img {
         height: 50%;
       }
 
-
-      @media only screen and (min-width: 768px)and (max-width: 991px) {
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
         height: 27px;
         & > img {
           height: 50%;
@@ -123,19 +157,30 @@ nav{
       font-size: 18px;
       padding-left: 7px;
 
-      @media only screen and (min-width: 768px)and (max-width: 991px) {
-        width: 80px;
-        white-space: nowrap;
-        font-size: 12px;
+      @media only screen and  (max-width: 1199px) {
+        padding-left: 15px;
+        font-size: 16px;
       }
 
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
+        width: 80px;
+        white-space: nowrap;
+        padding-left: 10px;
+        font-size: 1.4vw;
+      }
 
       @media only screen and (max-width: 767px) {
+        width: 70px;
+        padding-left: 0;
+        font-size: 2vw;
+        white-space: normal;
+      }
+
+      @media only screen and (max-width: 450px) {
         width: 70px;
         font-size: 3vw;
         white-space: normal;
       }
-
     }
   }
 
@@ -146,14 +191,55 @@ nav{
 }
 
 .focused{
+  position: relative;
   color: $colorInfo !important;
   font-weight: 700;
 }
 
+.items > .focused{
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    border: 10px solid transparent;
+    border-top: 10px solid $colorBgCard;
+  }
+
+  @media only screen and (max-width: 991px) {
+    &:after {
+      bottom: -35px;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    &:after {
+      bottom: -35px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    &:after {
+      content: '';
+      position: absolute;
+      left: 36%;
+      bottom: -37px;
+      border: 10px solid transparent;
+      border-top: 10px solid $colorBgCard;
+    }
+  }
+
+
+}
 
 //Content
 .content{
   text-align: center;
+
+  @media only screen and (max-width: 1199px) {
+    padding: 0 30px;
+  }
 
   @media only screen and (max-width: 767px) {
    padding: 0 15px;
@@ -165,7 +251,7 @@ nav{
     justify-content: center;
     align-items: center;
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       padding: 52px 0 62px;
     }
 
@@ -181,8 +267,15 @@ nav{
       font-size: 18px;
       text-decoration: none;
       text-transform: uppercase;
+      @extend .transition-all;
+      opacity: 1;
 
-      @media only screen and (min-width: 768px)and (max-width: 991px) {
+      &:hover{
+        @extend .transition-all;
+        opacity: .5;
+      }
+
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
         font-size: 13px;
         line-height: 19px;
       }
@@ -198,7 +291,7 @@ nav{
       font-size: 18px;
       padding: 0 8px;
 
-      @media only screen and (min-width: 768px)and (max-width: 991px) {
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
         font-size: 24px;
       }
 
@@ -210,7 +303,7 @@ nav{
   }
   &__description{
     font-family: 'museo_sans_cyrl300','Arial', sans-serif;
-    width: 540px;
+    width: 40vw;
     padding: 54px 0 50px;
     margin: auto;
     text-align: center;
@@ -276,7 +369,7 @@ nav{
   padding-bottom: 80px;
 
 
-  @media only screen and (min-width: 768px)and (max-width: 992px) {
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
     padding-bottom: 30px;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -291,8 +384,7 @@ nav{
 
 .ticket{
   position: relative;
-  padding-top: 15px;
-  padding-bottom: 155px;
+  padding: 15px 1px 155px;
   width: 366px;
   margin: 0 7.5px;
   display: flex;
@@ -302,7 +394,7 @@ nav{
   box-shadow: 0 0 10px 1px rgba(115, 115, 115, 0.3);
 
 
-  @media only screen and (min-width: 768px)and (max-width: 992px) {
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
     width: 40%;
     margin-bottom: 15px;
   }
@@ -320,7 +412,7 @@ nav{
     text-transform: uppercase;
     font-size: 20px;
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       font-size: 17px;
     }
 
@@ -334,7 +426,7 @@ nav{
     color: $colorInfo;
     text-transform: uppercase;
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       white-space: nowrap;
       font-size: 17px;
     }
@@ -348,7 +440,7 @@ nav{
     font-family: 'museo_sans_cyrl700','Arial', sans-serif;
     font-size: 60px;
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       padding-top: 10px;
       font-size: 50px;
     }
@@ -365,7 +457,7 @@ nav{
     color: $colorSave;
     font-size: 14px;
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       padding-top: 5px;
       padding-bottom: 0;
     }
@@ -385,7 +477,7 @@ nav{
     font-size: 18px;
     padding-bottom: 50px;
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       padding-bottom: 22px;
     }
 
@@ -402,6 +494,11 @@ nav{
   &__list{
     text-align: left;
     padding: 0 35px 0 58px;
+
+    @media only screen and (max-width: 1199px) {
+      padding: 0 20px;
+    }
+
     &_item{
       position: relative;
       display: flex;
@@ -441,7 +538,7 @@ nav{
       border: 1px solid $colorInfo;
       cursor: pointer;
 
-      @media only screen and (min-width: 768px)and (max-width: 991px) {
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
         font-size: 15px;
         padding: 13px 0;
       }
@@ -464,7 +561,7 @@ nav{
   padding-top: 36px;
   padding-bottom: 175px;
 
-  @media only screen and (min-width: 768px)and (max-width: 991px) {
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
     padding-top: 45px;
   }
 }
@@ -478,7 +575,7 @@ nav{
   text-transform: uppercase;
   cursor: pointer;
 
-  @media only screen and (min-width: 768px)and (max-width: 991px) {
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
     font-size: 16px;
   }
 }
@@ -487,7 +584,7 @@ nav{
   width: 200px;
   height: 40px;
 
-  @media only screen and (min-width: 768px)and (max-width: 991px) {
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
     width: 250px;
     height: 55px;
   }
@@ -498,7 +595,7 @@ nav{
 .partners{
   padding-top: 145px;
 
-  @media only screen and (min-width: 768px)and (max-width: 991px) {
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
     padding: 77px 75px 0;
   }
 
@@ -529,7 +626,7 @@ nav{
     padding-top: 45px;
     padding-bottom: 80px;
 
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
       padding-top: 35px;
       padding-bottom: 52px;
     }
@@ -542,12 +639,23 @@ nav{
 
     &_logo{
       margin: 0 19px;
-      width: 75px;
+      width: 7vw;
+      & > img {
+        width: 100%;
+      }
 
-      @media only screen and (min-width: 768px)and (max-width: 991px) {
+
+      @media only screen and (max-width: 1199px) {
+        width: 10vw;
+        & > img {
+          width: 100%;
+        }
+      }
+
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
         width: 95px;
         & > img {
-          width: 90px;
+          width: 100%;
         }
       }
 
@@ -555,7 +663,7 @@ nav{
         margin: 0 10px;
         width: 75px;
         & > img {
-          width: 75px;
+          width: 100%;
         }
       }
     }
@@ -565,21 +673,28 @@ nav{
 
 
 footer{
-  padding-top: 40px;
+  padding-top: 30px;
   padding-bottom: 20px;
   background-color: $colorFooter;
   text-align: center;
+  .footer-logo > a {
+    @extend .transition-all;
+    opacity: 1;
+    &:hover {
+      @extend .transition-all;
+      opacity: .5;
+    }
+  }
 
-  @media only screen and (min-width: 768px)and (max-width: 991px) {
+  @media only screen and (max-width: 1199px) {
     .footer-logo{
       & > a > img{
-        width: 235px;
+        width: 14vw;
       }
     }
   }
 
-  @media only screen and (max-width: 767px) {
-    padding: 40px 15px;
+  @media only screen and (max-width: 991px) {
     .footer-logo{
       & > a > img{
         width: 235px;
@@ -588,16 +703,8 @@ footer{
   }
 
   .footer-menu {
+    padding-top: 15px;
 
-
-
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
-      padding-top: 25px;
-    }
-
-    @media only screen and (max-width: 767px) {
-      padding-top: 27px;
-    }
     &__list{
       display: flex;
       justify-content: center;
@@ -609,7 +716,6 @@ footer{
         justify-content: space-between;
         max-width: 290px;
         margin: auto;
-
       }
 
       & > li {
@@ -623,7 +729,13 @@ footer{
           text-transform: uppercase;
           text-decoration: none;
           font-size: 10px;
-          @media only screen and (min-width: 768px)and (max-width: 991px) {
+          @extend .transition-all;
+          opacity: 1;
+          &:hover{
+            @extend .transition-all;
+            opacity: .5;
+          }
+          @media only screen and (min-width: 768px) and (max-width: 991px) {
             font-size: 14px;
           }
         }
@@ -633,11 +745,8 @@ footer{
   .footer-icons{
     display: flex;
     justify-content: center;
+    padding-top: 10px;
 
-
-    @media only screen and (min-width: 768px)and (max-width: 991px) {
-      padding-top: 27px;
-    }
     @media only screen and (max-width: 767px) {
       max-width: 290px;
       margin: auto;
@@ -649,14 +758,14 @@ footer{
         width: 40px;
         font-size: 20px;;
         color: $colorDefault;
+        @extend .transition-all;
+        opacity: 1;
         &:hover{
-          .social-icon{
-            font-size: 20px;
-            color: red;
-          }
+          @extend .transition-all;
+          opacity: .5;
         }
 
-        @media only screen and (min-width: 768px)and (max-width: 991px) {
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
           width: 60px;
         }
         @media only screen and (max-width: 767px) {
@@ -666,6 +775,7 @@ footer{
     }
   }
   .general-info{
+    padding-top: 25px;
 
     @media only screen and (max-width: 767px) {
       padding-top: 35px;
@@ -676,18 +786,29 @@ footer{
       list-style-type: none;
       padding-left: 0;
       margin: 0;
-
-      @media only screen and (min-width: 768px)and (max-width: 991px) {
-        padding-top: 42px;
+      padding-top: 10px;
+      a {
+        @extend .transition-all;
+        opacity: 1;
+        &:hover{
+          @extend .transition-all;
+          opacity: .5;
+        }
       }
+
+
       @media only screen and (max-width: 767px) {
         flex-direction: column;
         justify-content: center;
       }
 
       & > div {
-        padding: 0 10px;
+
+        @media only screen and (max-width: 991px) {
+          padding: 0 3px;
+        }
         @media only screen and (max-width: 767px) {
+          padding: 0 3px;
         }
         a {
           font-family: 'museo_sans_cyrl300','Arial', sans-serif;
@@ -699,11 +820,23 @@ footer{
     }
     &__conditions{
       position: relative;
+      margin: 0 7px;
+
+      @media only screen and (max-width: 991px) {
+        margin: 0;
+      }
     }
 
     .general-info-terms{
+      padding: 0 7px;
+
+      @media only screen and (max-width: 991px) {
+        padding-right: 5px;
+        padding-left: 5px;
+      }
       @media only screen and (max-width: 767px) {
         padding-right: 5px;
+        padding-left: 0;
       }
 
     }
@@ -714,11 +847,17 @@ footer{
     }
     .general-info-policy{
       position: relative;
+      padding: 0 7px;
+
+      @media only screen and (max-width: 991px) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
       @media only screen and (max-width: 767px) {
         padding-left: 5px;
+        padding-right: 0;
     }
     .general-info-copyright{
-
     }
   }
 }
@@ -728,19 +867,26 @@ footer{
 }
 
 
-[class~="hidden-content"]{
-  display: none;
-}
-
 
 //Button
-button:focus {
-  outline: none;
+button{
+  @extend .transition-all;
+  opacity: 1;
+  &:hover{
+    @extend .transition-all;
+    opacity: .5;
+  }
+  &:focus {
+    outline: none;
+    opacity: 1;
+  }
 }
 
 //Input
 input[type="text"]{
   width: 100%;
+  text-align: center;
+  background-color: $colorDefault;
   height: 15px;
   border: none;
   box-shadow: inset 0 0 8px $colorPartnerText;
@@ -753,6 +899,11 @@ input:focus{
   outline-color: $colorCatalog;
 }
 
+//Classes for showing/hiding elements
+[class~="hidden-content"]{
+  display: none;
+}
+
 
 [class~="hidden-mobile"]{
   @media only screen and (max-width: 767px) {
@@ -760,7 +911,7 @@ input:focus{
   }
 }
 [class~="hidden-desktop"]{
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 767px) {
     display: none !important;
   }
 }

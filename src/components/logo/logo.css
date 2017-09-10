@@ -1,5 +1,23 @@
+.transition-all, .hrn-logo > a {
+  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out; }
+
+.transition-color {
+  transition: color 0.4s ease-in-out;
+  -webkit-transition: color 0.4s ease-in-out;
+  -moz-transition: color 0.4s ease-in-out; }
+
+.transition-bg-color {
+  transition: background-color 0.4s ease-in-out;
+  -webkit-transition: background-color 0.4s ease-in-out;
+  -moz-transition: background-color 0.4s ease-in-out; }
+
 .hrn-logo > a > img {
   width: 222px; }
   @media only screen and (max-width: 767px) {
+    .hrn-logo > a > img {
+      width: 34vw; } }
+  @media only screen and (max-width: 450px) {
     .hrn-logo > a > img {
       width: 54vw; } }

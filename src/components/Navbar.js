@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Logo from './logo/Logo';
 
-// import popo from '../data/icon-1.png'
-
-
 class Navbar extends Component {
 
     constructor(props){
@@ -26,6 +23,7 @@ class Navbar extends Component {
             <div className="navbar">
                 <div className="upper-nav">
                     <Logo/>
+                    <MobileMenu/>
                 </div>
                 <nav>
                     <ul className="items">
@@ -39,8 +37,8 @@ class Navbar extends Component {
                                     className={`menu-item ${style}`}
                                     key={elem.id}
                                     onClick={() => this.getFocused(i)}>
-                                    <span className="menu-item__logo"><img src={elem.imageUrl} alt=""/></span>
-                                    <span className={`menu-item__link ${style}`}>{elem.item}</span>
+                                        <span className="menu-item__logo"><img src={elem.imageUrl} alt=""/></span>
+                                        <span className={`menu-item__link ${style}`}>{elem.item}</span>
                                 </li>
                                 )
                             })
@@ -51,6 +49,14 @@ class Navbar extends Component {
         );
     }
 }
+
+const MobileMenu = () => (
+    <div className="mobile-menu hidden-desktop">
+        <a  className="mobile-menu__show" href="">
+            <i className="fa fa-bars" aria-hidden="true"/>
+        </a>
+    </div>
+)
 
 
 
