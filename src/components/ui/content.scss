@@ -387,9 +387,10 @@ nav{
   box-shadow: 0 0 10px 1px rgba(115, 115, 115, 0.3);
 
 
-  @media only screen and (min-width: 768px) and (max-width: 992px) {
+  @media only screen and (max-width: 992px) {
     width: 40%;
     margin-bottom: 15px;
+    padding-bottom: 65px;
   }
 
   @media only screen and (max-width: 767px) {
@@ -557,6 +558,7 @@ nav{
 
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     padding-top: 45px;
+    padding-bottom: 65px;
   }
 
   @media only screen and (max-width: 767px) {

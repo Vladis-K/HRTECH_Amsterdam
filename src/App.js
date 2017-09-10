@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import './App.css'
 import HomePage from "./pages/HomePage";
 
@@ -110,7 +111,11 @@ const tickets = [
 class App extends Component {
     render() {
         return (
-            <div className="app">
+            <div>
+                <Helmet titleTemplate="%s / HRTECH" />
+                <Helmet>
+                    <title>HRN</title>
+                </Helmet>
                 <HomePage
                     menu={menu}
                     tickets={tickets}
