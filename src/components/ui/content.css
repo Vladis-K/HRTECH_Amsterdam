@@ -316,11 +316,10 @@ nav {
   justify-content: space-between;
   background-color: #f8f8f8;
   box-shadow: 0 0 10px 1px rgba(115, 115, 115, 0.3); }
-  @media only screen and (max-width: 992px) {
+  @media only screen and (min-width: 768px) and (max-width: 992px) {
     .ticket {
       width: 40%;
-      margin-bottom: 15px;
-      padding-bottom: 65px; } }
+      margin-bottom: 15px; } }
   @media only screen and (max-width: 767px) {
     .ticket {
       width: 100%;
@@ -344,6 +343,9 @@ nav {
     font-size: 20px;
     color: #18a8e1;
     text-transform: uppercase; }
+    @media only screen and (min-width: 1199px) and (max-width: 1440px) {
+      .ticket__info {
+        letter-spacing: -1px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .ticket__info {
         white-space: nowrap;
@@ -452,8 +454,7 @@ nav {
   padding-bottom: 175px; }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .ticket-enlarged {
-      padding-top: 45px;
-      padding-bottom: 65px; } }
+      padding-top: 45px; } }
   @media only screen and (max-width: 767px) {
     .ticket-enlarged {
       padding-bottom: 65px; } }
